@@ -1,12 +1,12 @@
 # Dockerfile
-FROM php:7.4
+FROM php:8.0
 
 WORKDIR /app
 
 COPY . /app
 COPY .env.dev /app/.env
 
-RUN apt update && apt upgrade -y && apt install -y python-pip git zip sudo wget nodejs gnupg \
+RUN apt update && apt upgrade -y && apt install -y python3-pip git zip sudo wget nodejs gnupg \
     zlib1g-dev libzip-dev libicu-dev libpng-dev libonig-dev libgmp-dev iverilog arachne-pnr \
     arachne-pnr-chipdb fpga-icestorm fpga-icestorm-chipdb
 
@@ -19,9 +19,9 @@ ENV PATH ./vendor/bin:/composer/vendor/bin:$PATH
 RUN curl -o- -L https://yarnpkg.com/install.sh | bash -s --
 ENV PATH /root/.yarn/bin:/root/.config/yarn/global/node_modules/.bin:$PATH
 
-RUN curl -O http://zlib.net/zlib-1.2.11.tar.gz && \
-    tar xvf zlib-1.2.11.tar.gz && \
-    cd zlib-1.2.11 && \
+RUN curl -O http://zlib.net/zlib-1.2.12.tar.gz && \
+    tar xvf zlib-1.2.12.tar.gz && \
+    cd zlib-1.2.12 && \
     ./configure && \
     echo "#define MAX_WBITS  13\n$(cat zconf.h)" > zconf.h && \
     make && \
