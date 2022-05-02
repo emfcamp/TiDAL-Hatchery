@@ -4,7 +4,7 @@ FROM php:8.0
 WORKDIR /app
 
 COPY . /app
-COPY .env.dev /app/.env
+COPY .env.quick /app/.env
 
 RUN apt update && apt upgrade -y && apt install -y python3-pip git zip sudo wget nodejs gnupg \
     zlib1g-dev libzip-dev libicu-dev libpng-dev libonig-dev libgmp-dev iverilog arachne-pnr \
