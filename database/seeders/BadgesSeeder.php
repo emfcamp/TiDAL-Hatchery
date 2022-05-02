@@ -17,6 +17,7 @@ class BadgesSeeder extends Seeder
                 'sha2017' => 'SHA2017 Badge',
                 'disobey2019' => 'Disobey 2019',
                 'hackerhotel2019' => 'Hacker Hotel 2019',
+                'tidal' => 'EMFcamp 2022',
             ] as $slug => $name) {
                 Badge::create(['slug' => $slug, 'name' => $name]);
             }
