@@ -95,9 +95,9 @@ If you don't want to install things and do the above steps, Docker makes all the
 
 ```bash
 docker-compose up # -d for daemon mode
-docker exec -it hatchery-laravel-1 php artisan migrate --seed
-docker exec -it hatchery-laravel-1 yarn dev
-docker exec -it hatchery-laravel-1 php artisan horizon
+docker-compose exec laravel php artisan migrate --seed
+docker-compose exec laravel yarn dev
+docker-compose exec laravel php artisan horizon
 ```
 
 Enjoy your Hatchery at <http://localhost:8000>
