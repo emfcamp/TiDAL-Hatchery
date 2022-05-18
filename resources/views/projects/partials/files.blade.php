@@ -73,7 +73,7 @@
     </div>
 {!! Form::close() !!}
 @endif
-<div id="confirm-delete" class="modal fade" tabindex="-1" role="dialog">
+<div id="confirm-delete" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-body">

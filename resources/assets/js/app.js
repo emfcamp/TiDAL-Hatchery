@@ -310,7 +310,7 @@ window.onload = function() {
 			.listen('ProjectUpdated', (data) => {
 				const messages = document.getElementById('messages');
 				messages.innerHTML += '<div class="alert alert-' + data.type + ' alert-dismissible">\n' +
-					'<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>\n' +
+					'<button type="button" class="close" data-bs-dismiss="alert" aria-hidden="true">×</button>\n' +
 					'<p>' + data.message + '</p>\n' +
 					'</div>';
 			});

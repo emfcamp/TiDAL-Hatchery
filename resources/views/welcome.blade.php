@@ -19,14 +19,14 @@
 		    @endif
 		    <div class="content text-center">
 				<div class="title m-b-md">
-					<h1 class="hatcher"><span class="hidden-xs">{{ request()->getHost() }}</span> {{ config('app.name', 'Laravel') }}</h1>
+					<h1 class="hatcher"><span class="hidden-xs">TiDAL</span> Hatchery</h1>
 				</div>
 				<div class="spacer col-md-12 hidden-xs"></div>
 				<div class="links">
-					<a class="btn btn-success" href="https://docs.badge.team/">Documentation</a>
-					<a class="btn btn-danger" href="https://github.com/badgeteam/">GitHub</a>
-					<a class="btn btn-info" href="https://twitter.com/SHA2017Badge">Twitter</a>
-					<a class="btn btn-primary" href="https://t.me/joinchat/AMG-ZhQQ9cE1KAAbQozy5Q">Telegram</a>
+					<a class="btn btn-success" href="https://badge.emfcamp.org">Documentation</a>
+					<a class="btn btn-danger" href="https://github.com/emfcamp/">GitHub</a>
+					<a class="btn btn-info" href="https://twitter.com/emfcamp">Twitter</a>
+					<a class="btn btn-primary" href="ircs://irc.libera.chat:6697/#emfcamp-badge">IRC</a>
 				</div>
 				<div>
 					Contributors: {{$users}}
