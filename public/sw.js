@@ -1,4 +1,4 @@
-const cacheName = 'hatchery::20200324';
+const cacheName = 'hatchery::20220518';
 
 self.addEventListener('install', e => {
 	e.waitUntil(
@@ -15,6 +15,8 @@ self.addEventListener('install', e => {
 				'/img/sucks.gif',
 				'/img/alert.gif',
 				'/img/bs.png',
+				'/img/emf-b-logo-circular.png',
+				'/img/emf-w-logo-circular.png',
 				'/fonts/vendor/bootstrap-sass/bootstrap/glyphicons-halflings-regular.woff',
 				'/fonts/vendor/bootstrap-sass/bootstrap/glyphicons-halflings-regular.eot',
 				'/fonts/vendor/bootstrap-sass/bootstrap/glyphicons-halflings-regular.woff2',

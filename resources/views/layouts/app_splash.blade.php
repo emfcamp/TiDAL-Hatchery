@@ -9,7 +9,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="csrfToken" content="{{ csrf_token() }}">
-    <title>{{ request()->getHost() }} {{ config('app.name', 'Hatchery') }}</title>
+
+    <title>{{ config('app.name', 'Hatchery') }}</title>
     <meta name="description" content="A platform to publish and develop software for several electronic badges.">
 
     <meta name="theme-color" content="#F2DAC7">
@@ -23,9 +24,6 @@
     <livewire:styles>
 
     <style>
-	html {
-		background-color: white;
-	}
 	.links > a {
 		letter-spacing: .1rem;
         margin: 10px;
@@ -43,6 +41,8 @@
 		height: 2em;
 	}
     </style>
+
+    <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
                 'csrfToken' => csrf_token(),
@@ -51,10 +51,16 @@
         window.UserId = {{ Auth::user()->id }};
         @endauth
     </script>
+
 </head>
 <body>
     @include('partials.messages')
-    <img class="logo" src="/img/bs.png" alt="Badge.r & smol snek" />
+    <picture>
+      <source
+        srcset="/img/emf-w-logo-circular.png"
+        media="(prefers-color-scheme: dark)">
+      <img class="logo" src="/img/emf-b-logo-circular.png" alt="Electromagnetic Field">
+    </picture>
     @yield('content')
     <script type="application/ld+json">
 {
