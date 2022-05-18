@@ -2,11 +2,19 @@
 
 declare(strict_types=1);
 
-use App\Models\User;
+use Illuminate\Support\Facades\Broadcast;
 
-Broadcast::channel('App.User.*', function (User $user) {
-    /** @var User $authUser */
-    $authUser = Auth::user();
+/*
+|--------------------------------------------------------------------------
+| Broadcast Channels
+|--------------------------------------------------------------------------
+|
+| Here you may register all of the event broadcasting channels that your
+| application supports. The given channel authorization callbacks are
+| used to check if an authenticated user can listen to the channel.
+|
+*/
 
-    return Auth::check() && $user->id === $authUser->id;
+Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
+    return (int) $user->id === (int) $id;
 });

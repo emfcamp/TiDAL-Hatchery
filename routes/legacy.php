@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use Illuminate\Support\Facades\Route;
+
 Route::middleware(['auth', 'webauthn', '2fa'])->group(function () {
     Route::get('home', 'HomeController@index')->name('home');
 

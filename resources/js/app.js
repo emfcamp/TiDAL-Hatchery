@@ -10,11 +10,11 @@ if('serviceWorker' in navigator) {
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-window.Picker = require('../../../node_modules/vanilla-picker');
+window.Picker = require('../../node_modules/vanilla-picker');
 
 require('./bootstrap');
 
-window.Dropzone = require('../../../node_modules/dropzone/dist/dropzone');
+window.Dropzone = require('../../node_modules/dropzone/dist/dropzone');
 window.keymap = 'default';
 
 const framebuffer = [];
@@ -179,17 +179,17 @@ window.onload = function() {
 	].forEach(function (field) {
 		if (document.getElementById(field)) {
 			window.CodeMirror = require([
-				'../../../node_modules/codemirror/lib/codemirror',
-				'../../../node_modules/codemirror/mode/python/python',
-				'../../../node_modules/codemirror/mode/javascript/javascript',
-				'../../../node_modules/codemirror/mode/markdown/markdown',
-				'../../../node_modules/codemirror/mode/verilog/verilog',
-				'../../../node_modules/codemirror/mode/shell/shell',
-				'../../../node_modules/codemirror/addon/dialog/dialog',
-				'../../../node_modules/codemirror/addon/search/searchcursor',
-				'../../../node_modules/codemirror/keymap/vim',
-				'../../../node_modules/codemirror/keymap/sublime',
-				'../../../node_modules/codemirror/keymap/emacs'
+				'../../node_modules/codemirror/lib/codemirror',
+				'../../node_modules/codemirror/mode/python/python',
+				'../../node_modules/codemirror/mode/javascript/javascript',
+				'../../node_modules/codemirror/mode/markdown/markdown',
+				'../../node_modules/codemirror/mode/verilog/verilog',
+				'../../node_modules/codemirror/mode/shell/shell',
+				'../../node_modules/codemirror/addon/dialog/dialog',
+				'../../node_modules/codemirror/addon/search/searchcursor',
+				'../../node_modules/codemirror/keymap/vim',
+				'../../node_modules/codemirror/keymap/sublime',
+				'../../node_modules/codemirror/keymap/emacs'
 			], function (CodeMirror) {
 				editor = CodeMirror.fromTextArea(document.getElementById(field), {
 					lineNumbers: true,
@@ -212,12 +212,12 @@ window.onload = function() {
 
 		if (document.getElementById(field + '-readonly')) {
 			window.CodeMirror = require([
-				'../../../node_modules/codemirror/lib/codemirror',
-				'../../../node_modules/codemirror/mode/python/python',
-				'../../../node_modules/codemirror/mode/javascript/javascript',
-				'../../../node_modules/codemirror/mode/markdown/markdown',
-				'../../../node_modules/codemirror/mode/verilog/verilog',
-				'../../../node_modules/codemirror/mode/shell/shell'
+				'../../node_modules/codemirror/lib/codemirror',
+				'../../node_modules/codemirror/mode/python/python',
+				'../../node_modules/codemirror/mode/javascript/javascript',
+				'../../node_modules/codemirror/mode/markdown/markdown',
+				'../../node_modules/codemirror/mode/verilog/verilog',
+				'../../node_modules/codemirror/mode/shell/shell'
 			], function (CodeMirror) {
 				CodeMirror.fromTextArea(document.getElementById(field + '-readonly'), {
 					lineNumbers: true,
@@ -306,7 +306,7 @@ window.onload = function() {
 	}
 
 	if (window.UserId) {
-		window.Echo.private('App.User.' + window.UserId)
+		window.Echo.private('App.Models.User.' + window.UserId)
 			.listen('ProjectUpdated', (data) => {
 				const messages = document.getElementById('messages');
 				messages.innerHTML += '<div class="alert alert-' + data.type + ' alert-dismissible">\n' +

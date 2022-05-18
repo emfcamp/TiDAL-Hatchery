@@ -19,9 +19,9 @@ use App\Models\Project;
 use App\Models\User;
 use App\Models\Version;
 use App\Models\Warning;
-use App\Support\GitRepository;
 use App\Support\Helpers;
-use Cz\Git\GitException;
+use CzProject\GitPhp\Git;
+use CzProject\GitPhp\GitException;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
@@ -309,13 +309,13 @@ class ProjectsController extends Controller
      * Store a newly created resource in storage.
      *
      * @param ProjectStoreRequest $request
-     * @param GitRepository       $repo
+     * @param Git                 $git
      *
      * @throws Exception
      *
      * @return RedirectResponse
      */
-    public function import(ProjectStoreRequest $request, GitRepository $repo): RedirectResponse
+    public function import(ProjectStoreRequest $request, Git $git): RedirectResponse
     {
         if (Project::where('slug', Str::slug($request->name, '_'))->exists()) {
             return redirect()->route('projects.import')->withInput()->withErrors(['slug already exists :(']);
@@ -327,7 +327,7 @@ class ProjectsController extends Controller
         $tempFolder = sys_get_temp_dir() . '/' . Str::slug($request->name);
 
         try {
-            $repo->cloneRepository($request->git, $tempFolder, ['-q', '--single-branch', '--depth', 1]);
+            $git->cloneRepository($request->git, $tempFolder, ['-q', '--single-branch', '--depth', 1]);
         } catch (GitException $e) {
             return redirect()->route('projects.import')->withInput()->withErrors([$e->getMessage()]);
         }

@@ -52,10 +52,10 @@ class ProjectUpdated extends Event implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        $whom = [new PrivateChannel('App.User.' . $this->project->user_id)];
+        $whom = [new PrivateChannel('App.Models.User.' . $this->project->user_id)];
 
         foreach ($this->project->collaborators as $collaborator) {
-            $whom[] = new PrivateChannel('App.User.' . $collaborator->id);
+            $whom[] = new PrivateChannel('App.Models.User.' . $collaborator->id);
         }
 
         return $whom;

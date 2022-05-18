@@ -19,7 +19,7 @@ class HorizonServiceProvider extends HorizonApplicationServiceProvider
     public function boot()
     {
         parent::boot();
-        Horizon::routeMailNotificationsTo('horizon@badge.team');
+        Horizon::routeMailNotificationsTo('badge@emfcamp.org');
         Horizon::night();
     }
 

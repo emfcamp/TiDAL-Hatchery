@@ -21,7 +21,6 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css', !App::environment(['local', 'testing'])) }}?v=1.0" rel="stylesheet">
-    <livewire:styles>
 
     <style>
 	.links > a {
@@ -79,7 +78,6 @@
     </script>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js', !App::environment(['local', 'testing'])) }}?v=1.0"></script>
-    <livewire:scripts>
 
     @yield('script')
 </body>

@@ -441,8 +441,8 @@ class ProjectTest extends TestCase
         $event = new ProjectUpdated($project, $this->faker->text);
 
         $this->assertCount(2, $event->broadcastOn());
-        $this->assertEquals('private-App.User.' . $user->id, $event->broadcastOn()[0]->name);
-        $this->assertEquals('private-App.User.' . $otherUser->id, $event->broadcastOn()[1]->name);
+        $this->assertEquals('private-App.Models.User.' . $user->id, $event->broadcastOn()[0]->name);
+        $this->assertEquals('private-App.Models.User.' . $otherUser->id, $event->broadcastOn()[1]->name);
     }
 
     /**

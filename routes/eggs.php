@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use Illuminate\Support\Facades\Route;
+
 Route::get('get/{project}/json', 'PublicController@projectJson')->name('project.json');
 Route::get('list/json', 'PublicController@listJson')->name('list.json');
 Route::get('search/{words}/json', 'PublicController@searchJson')->name('search.json');
