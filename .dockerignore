@@ -1,0 +1,7 @@
+database/mariadb
+storage
+public/css
+public/js
+public/fonts
+public/eggs
+public/mix-manifest.json

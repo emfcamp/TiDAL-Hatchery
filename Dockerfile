@@ -1,16 +1,15 @@
 # Dockerfile
-FROM php:8.0
+FROM php:8.0-fpm
 
 WORKDIR /app
 
-COPY . /app
-COPY .env.quick /app/.env
-
-RUN apt update && apt upgrade -y && apt install -y python3-pip git zip sudo wget nodejs gnupg \
+RUN apt-get update && apt-get -y install python3-pip git zip sudo wget nodejs gnupg \
     zlib1g-dev libzip-dev libicu-dev libpng-dev libonig-dev libgmp-dev iverilog arachne-pnr \
     arachne-pnr-chipdb fpga-icestorm fpga-icestorm-chipdb
 
 RUN docker-php-ext-install pdo pdo_mysql mysqli pcntl zip intl gd mbstring gmp exif
+RUN pecl install redis && \
+    docker-php-ext-enable redis
 
 ENV COMPOSER_HOME /composer
 ENV COMPOSER_ALLOW_SUPERUSER 1
@@ -29,11 +28,18 @@ RUN curl -O http://zlib.net/zlib-1.2.12.tar.gz && \
 
 RUN pip install pyflakes==2.2.0
 
+COPY . /app
+COPY .env.quick /app/.env
+
+RUN mkdir -p storage/framework/views
 RUN composer install
 RUN chmod -R 777 bootstrap/cache storage
 
 RUN yarn && yarn production
 
+RUN yarn global add laravel-echo-server
+
 EXPOSE 8000
 
 CMD ["php", "artisan", "serve", "--host", "0.0.0.0"]
+

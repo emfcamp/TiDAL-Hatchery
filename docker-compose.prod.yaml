@@ -1,0 +1,94 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx
+    ports:
+      - "8060:80"
+    depends_on:
+      - websockets
+    volumes:
+      # laravel-prod.sh copies the static files out for us
+      - yarn-out:/app/public
+      - php-fpm-sock:/php-fpm-sock
+      - ./docker/nginx.conf:/etc/nginx/nginx.conf
+    restart: unless-stopped
+
+  laravel:
+#    image: "ghcr.io/emfcamp/tidal-hatchery:latest"
+    build: .
+    command: "docker/laravel-prod.sh"
+    depends_on:
+      - mariadb
+      - redis
+    volumes:
+      - ./.env.prod:/app/.env.prod
+      - ./storage:/app/storage
+      - php-fpm-sock:/php-fpm-sock
+      - yarn-out:/yarn-out
+      - ./docker/php-fpm.conf:/usr/local/etc/php-fpm.conf
+    environment:
+      DB_HOST: mariadb
+      DB_PORT: 3306
+      DB_DATABASE: badgeware
+      DB_USERNAME: badgeware
+      DB_PASSWORD: badgeware
+    labels:
+      com.centurylinklabs.watchtower.enable: true
+    networks:
+      - hatchery
+    restart: unless-stopped
+
+  websockets:
+#    image: "ghcr.io/emfcamp/tidal-hatchery:latest"
+    build: .
+    command: laravel-echo-server start
+    ports:
+      - "8061:6001"
+    depends_on:
+      - redis
+      - laravel
+    labels:
+      com.centurylinklabs.watchtower.enable: true
+    networks:
+      - hatchery
+    restart: unless-stopped
+
+#  horizon:
+#    build:
+#    networks:
+#      - hatchery
+
+  mariadb:
+    image: mariadb
+    volumes:
+      - ./database/mariadb:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: badgeware
+      MYSQL_USER: badgeware
+      MYSQL_PASSWORD: badgeware
+    networks:
+      - hatchery
+    restart: unless-stopped
+
+  redis:
+    image: redis
+    networks:
+      - hatchery
+    restart: unless-stopped
+
+  watchtower:
+    image: "containrrr/watchtower"
+    command: --interval 30 --label-enable
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
+
+networks:
+  hatchery:
+
+volumes:
+  yarn-out:
+  php-fpm-sock:
+
