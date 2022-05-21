@@ -22,7 +22,7 @@ services:
       - mariadb
       - redis
     volumes:
-      - ./.env.prod:/app/.env.prod
+      - ./.env.prod:/app/.env
       - ./storage:/app/storage
       - php-fpm-sock:/php-fpm-sock
       - yarn-out:/yarn-out
