@@ -15,8 +15,7 @@ services:
     restart: unless-stopped
 
   laravel:
-#    image: "ghcr.io/emfcamp/tidal-hatchery:latest"
-    build: .
+    image: "ghcr.io/emfcamp/tidal-hatchery:latest"
     command: "docker/laravel-prod.sh"
     depends_on:
       - mariadb
@@ -40,8 +39,7 @@ services:
     restart: unless-stopped
 
   websockets:
-#    image: "ghcr.io/emfcamp/tidal-hatchery:latest"
-    build: .
+    image: "ghcr.io/emfcamp/tidal-hatchery:latest"
     command: laravel-echo-server start
     ports:
       - "8061:6001"
@@ -54,10 +52,27 @@ services:
       - hatchery
     restart: unless-stopped
 
-#  horizon:
-#    build:
-#    networks:
-#      - hatchery
+  horizon:
+    image: "ghcr.io/emfcamp/tidal-hatchery:latest"
+    command: "php artisan horizon"
+    depends_on:
+      - mariadb
+      - redis
+    volumes:
+      - ./.env.prod:/app/.env
+      - ./storage:/app/storage
+    environment:
+      DB_HOST: mariadb
+      DB_PORT: 3306
+      DB_DATABASE: badgeware
+      DB_USERNAME: badgeware
+      DB_PASSWORD: badgeware
+    labels:
+      com.centurylinklabs.watchtower.enable: true
+    networks:
+      - hatchery
+    restart: unless-stopped
+
 
   mariadb:
     image: mariadb
