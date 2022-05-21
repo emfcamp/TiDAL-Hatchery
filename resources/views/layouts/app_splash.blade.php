@@ -20,7 +20,7 @@
     <link rel="canonical" href="{{ url()->current() }}" />
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css', !App::environment(['local', 'testing'])) }}?v=1.0" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}?v=1.0" rel="stylesheet">
 
     <style>
 	.links > a {
@@ -77,7 +77,7 @@
 }
     </script>
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js', !App::environment(['local', 'testing'])) }}?v=1.0"></script>
+    <script src="{{ asset('js/app.js') }}?v=1.0"></script>
 
     @yield('script')
 </body>
