@@ -43,7 +43,7 @@ import Echo from 'laravel-echo';
 
 window.Pusher = require('pusher-js');
 
-let laravelEcho = new Echo({
+window.Echo = new Echo({
 	broadcaster: 'pusher',
 	key: process.env.MIX_PUSHER_APP_KEY ? process.env.MIX_PUSHER_APP_KEY : 'soketi',
 	wsHost: window.location.hostname == 'localhost' ? 'localhost' : window.location.hostname,
