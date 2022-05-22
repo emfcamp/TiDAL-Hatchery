@@ -38,7 +38,7 @@ return [
             'secret'  => env('PUSHER_APP_SECRET', 'soketi'),
             'app_id'  => env('PUSHER_APP_ID', 'soketi'),
             'options' => [
-                'host' => env('PUSHER_HOST', '127.0.0.1'),
+                'host' => env('PUSHER_HOST', 'websockets'),
                 'port' => env('PUSHER_PORT', 6001),
                 'scheme' => env('PUSHER_SCHEME', 'http'),
                 'encrypted' => true,
