@@ -11,5 +11,10 @@ chown -R www-data:www-data storage
 #php artisan migrate --seed
 php artisan migrate --force
 php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+php artisan event:cache
+php artisan sitemap:generate
+php artisan l5-swagger:generate
 
 exec php-fpm
