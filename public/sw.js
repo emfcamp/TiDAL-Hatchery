@@ -1,8 +1,8 @@
 const cacheName = 'hatchery::20220522';
 
 self.addEventListener('install', e => {
-	e.waitUntil(
-		caches.open(cacheName).then(cache => {
+    e.waitUntil(
+        caches.open(cacheName).then(cache => {
                 // '/0.js',
                 // '/2.js',
                 '/css/app.css',
@@ -39,17 +39,17 @@ self.addEventListener('install', e => {
                 '/vendor/horizon/mix-manifest.json',
                 '/vendor/webauthn/webauthn.js',
             return cache.addAll([
-			]).then(() => self.skipWaiting());
-		})
-	);
+            ]).then(() => self.skipWaiting());
+        })
+    );
 });
 
 self.addEventListener('fetch', event => {
-	event.respondWith(
-		caches.open(cacheName).then(cache => {
-			return cache.match(event.request).then(res => {
-				return res || fetch(event.request);
-			});
-		})
-	);
+    event.respondWith(
+        caches.open(cacheName).then(cache => {
+            return cache.match(event.request).then(res => {
+                return res || fetch(event.request);
+            });
+        })
+    );
 });
