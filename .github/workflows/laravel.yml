@@ -63,7 +63,7 @@ jobs:
     - name: Route clear
       run: php artisan route:clear
     - name: Run Mix
-      run: node_modules/.bin/mix production
+      run: node_modules/.bin/mix --production
     - name: Execute (Unit and Feature) tests via Pest
       env:
         DB_CONNECTION: mysql
