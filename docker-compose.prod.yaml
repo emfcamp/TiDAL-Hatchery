@@ -24,6 +24,7 @@ services:
     volumes:
       - ./.env.prod:/app/.env
       - ./storage:/app/storage
+      - ./public/eggs:/app/public/eggs
       - php-fpm-sock:/php-fpm-sock
       - yarn-out:/yarn-out
       - ./docker/php-fpm.conf:/usr/local/etc/php-fpm.conf
@@ -68,6 +69,7 @@ services:
     volumes:
       - ./.env.prod:/app/.env
       - ./storage:/app/storage
+      - ./public/eggs:/app/public/eggs
     environment:
       DB_HOST: mariadb
       DB_PORT: 3306
