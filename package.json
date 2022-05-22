@@ -12,7 +12,7 @@
     "hot": "mix watch --hot",
     "prod": "yarn production",
     "production": "mix --production",
-    "lint": "./node_modules/.bin/eslint --ext .js resources/assets/js",
+    "lint": "./node_modules/.bin/eslint --ext .js resources/js",
     "build": "yarn production",
     "test": "vendor/bin/phpstan analyse"
   },
