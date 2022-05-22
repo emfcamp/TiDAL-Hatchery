@@ -48,10 +48,10 @@ services:
     depends_on:
       - redis
     environment:
-      SOKETI_METRICS_SERVER_PORT: '9601'
-      SOKETI_DEFAULT_APP_ID: 'soketi'
-      SOKETI_DEFAULT_APP_KEY: 'soketi'
-      SOKETI_DEFAULT_APP_SECRET: soketi'
+      METRICS_SERVER_PORT:         '9601'
+      SOKETI_DEFAULT_APP_ID:       'soketi'
+      SOKETI_DEFAULT_APP_KEY:      'soketi'
+      SOKETI_DEFAULT_APP_SECRET:   'soketi'
     labels:
       com.centurylinklabs.watchtower.enable: true
     networks:
