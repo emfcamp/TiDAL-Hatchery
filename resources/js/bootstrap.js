@@ -46,9 +46,9 @@ window.Pusher = require('pusher-js');
 window.Echo = new Echo({
 	broadcaster: 'pusher',
 	key: process.env.MIX_PUSHER_APP_KEY ? process.env.MIX_PUSHER_APP_KEY : 'soketi',
-	wsHost: window.location.hostname == 'localhost' ? 'localhost' : window.location.hostname,
-	wsPort: window.location.hostname == 'localhost' ? 6001 : 6001,
-	wssPort: window.location.hostname == 'localhost' ? 6001 : 6001,
+	wsHost: process.env.MIX_PUSHER_APP_HOST ? process.env.MIX_PUSHER_APP_HOST : window.location.hostname,
+	wsPort: process.env.MIX_PUSHER_APP_PORT ? process.env.MIX_PUSHER_APP_PORT : 80,
+	wssPort: process.env.MIX_PUSHER_APP_PORT ? process.env.MIX_PUSHER_APP_PORT : 443,
 	forceTLS: false,
 	encrypted: true,
 	disableStats: true,
