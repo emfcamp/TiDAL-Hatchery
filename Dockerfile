@@ -37,8 +37,6 @@ RUN chmod -R 777 bootstrap/cache storage
 
 RUN yarn && yarn production
 
-RUN yarn global add laravel-echo-server
-
 EXPOSE 8000
 
 CMD ["php", "artisan", "serve", "--host", "0.0.0.0"]
