@@ -49,12 +49,13 @@ yarn
 yarn production
 ```
 
-Installing and configuring the async websocket server.
+Install the async websocket server.
 
+Global install  
 ```bash
-yarn global add laravel-echo-server
-laravel-echo-server init
-```
+yarn global install @soketi/soketi
+````
+or just install/run via docker (see below)
 
 Compiling and installing the patched minigzip.
 
@@ -79,8 +80,17 @@ TODO more info ;)
 You'll need a be running [Laravel Horizon](https://laravel.com/docs/7.x/horizon#deploying-horizon) service.
 
 For the websocket server.
+docker
 ```bash
-laravel-echo-server start
+docker run -p 6001:6001 -p 9601:9601 \
+    -e SOKETI_DEFAULT_APP_ID='soketi' \
+    -e SOKETI_DEFAULT_APP_KEY='soketi' \
+    -e SOKETI_DEFAULT_APP_SECRET='soketi' \
+    quay.io/soketi/soketi:1.0-16-debian
+```
+or if installed global
+```bash
+SOKETI_DEFAULT_APP_ID=soketi SOKETI_DEFAULT_APP_KEY=soketi SOKETI_DEFAULT_APP_SECRET=soketi soketi start
 ```
 
 ### Running the development server locally
