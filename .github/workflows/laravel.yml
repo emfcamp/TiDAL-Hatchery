@@ -63,7 +63,7 @@ jobs:
     - name: Route clear
       run: php artisan route:clear
     - name: Run Mix
-      run: yarn prod
+      run: yarn production
     - name: Execute (Unit and Feature) tests via Pest
       env:
         DB_CONNECTION: mysql
