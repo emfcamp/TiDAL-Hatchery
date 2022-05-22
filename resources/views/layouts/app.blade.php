@@ -20,7 +20,7 @@
     <link rel="canonical" href="{{ url()->current() }}" />
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}?v=1.0" rel="stylesheet">
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -133,7 +133,9 @@
 }
     </script>
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}?v=1.0"></script>
+    <script src="{{ mix('/js/manifest.js') }}"></script>
+    <script src="{{ mix('/js/vendor.js') }}"></script>
+    <script src="{{ mix('/js/app.js') }}"></script>
 
     @yield('script')
 </body>
