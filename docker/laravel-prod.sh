@@ -2,9 +2,6 @@
 
 echo "Starting laravel..."
 
-# Let nginx service static files directly
-cp -RT /app/public /yarn-out
-
 # Access to storage and logs
 chown -R www-data:www-data storage
 
@@ -16,5 +13,8 @@ php artisan view:cache
 php artisan event:cache
 php artisan sitemap:generate
 php artisan l5-swagger:generate
+
+# Let nginx service static files directly
+cp -RT /app/public /yarn-out
 
 exec php-fpm
