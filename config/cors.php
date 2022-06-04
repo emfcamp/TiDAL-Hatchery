@@ -17,13 +17,13 @@ return [
     |
     */
 
-    'paths' => ['api/*', 'basket/*', 'sanctum/csrf-cookie'],
+    'paths' => ['api/*', 'basket/*', 'sanctum/csrf-cookie', 'eggs/*'],
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*'],
+    'allowed_origins' => ['https://editor.badge.emfcamp.org', 'http://localhost'],
 
-    'allowed_origins_patterns' => [],
+    'allowed_origins_patterns' => ['^http://localhost:[0-9]+$'],
 
     'allowed_headers' => ['*'],
 
