@@ -10,6 +10,7 @@ services:
     volumes:
       # laravel-prod.sh copies the static files out for us
       - yarn-out:/app/public
+      - ./public/eggs:/app/public/eggs
       - php-fpm-sock:/php-fpm-sock
       - ./docker/nginx.conf:/etc/nginx/nginx.conf
     restart: unless-stopped
