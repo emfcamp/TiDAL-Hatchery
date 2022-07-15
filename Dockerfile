@@ -11,6 +11,9 @@ RUN docker-php-ext-install pdo pdo_mysql mysqli pcntl zip intl gd mbstring gmp e
 RUN pecl install redis && \
     docker-php-ext-enable redis
 
+RUN echo "upload_max_filesize = 16M" >> $PHP_INI_DIR/conf.d/upload.ini
+RUN echo "post_max_size = 16M" >> $PHP_INI_DIR/conf.d/upload.ini
+
 ENV COMPOSER_HOME /composer
 ENV COMPOSER_ALLOW_SUPERUSER 1
 RUN curl -s https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer
