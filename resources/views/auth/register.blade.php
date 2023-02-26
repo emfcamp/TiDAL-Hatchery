@@ -61,7 +61,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('editor') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Prefered editor</label>
+                            <label for="password" class="col-md-4 control-label">Preferred editor</label>
 
                             <div class="col-md-6">
                                 <select id="editor" class="form-control" name="editor">
